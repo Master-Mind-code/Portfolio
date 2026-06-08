@@ -5,13 +5,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Jean-Dominique Ebah  Développeur Full Stack  </title>
 <meta name="description" content="Développeur Full Stack & Ingénieur Logiciel basé en Côte d'Ivoire. Plateformes bancaires, monétique ISO 8583, bots de trading algorithmique, IA & cybersécurité." />
+<meta name="author" content="Jean-Dominique Ebah Niangoran" />
+<link rel="canonical" href="https://ia-toolkit.netlify.app/" />
+
+<!-- Favicon (SVG inline, pas de fichier externe requis) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23070810'/%3E%3Ctext x='50' y='68' font-family='Space Grotesk,Arial,sans-serif' font-size='62' font-weight='700' fill='%237c6dff' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ia-toolkit.netlify.app/" />
+<meta property="og:title" content="Jean-Dominique Ebah — Développeur Full Stack" />
+<meta property="og:description" content="Plateformes bancaires, monétique ISO 8583, bots de trading algorithmique, IA & cybersécurité. Basé à Abidjan, Côte d'Ivoire." />
+<meta property="og:image" content="https://ia-toolkit.netlify.app/assets/photo.png" />
+<meta property="og:image:alt" content="Jean-Dominique Ebah Niangoran, Développeur Full Stack" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Dominique.Ebah" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Jean-Dominique Ebah — Développeur Full Stack" />
+<meta name="twitter:description" content="Plateformes bancaires, monétique ISO 8583, bots de trading algorithmique, IA & cybersécurité. Basé à Abidjan, Côte d'Ivoire." />
+<meta name="twitter:image" content="https://ia-toolkit.netlify.app/assets/photo.png" />
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/portfolio.css" />
+
+<!-- Fallback : si le JS est désactivé/échoue, on force l'affichage du contenu -->
+<noscript>
+  <style>
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .cursor-dot, .cursor-ring { display: none !important; }
+  </style>
+</noscript>
+
+<!-- Données structurées (schema.org Person) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jean-Dominique Ebah Niangoran",
+  "jobTitle": "Développeur Full Stack & Ingénieur Logiciel",
+  "url": "https://ia-toolkit.netlify.app/",
+  "image": "https://ia-toolkit.netlify.app/assets/photo.png",
+  "email": "mailto:ebahniangoran@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Abidjan",
+    "addressCountry": "CI"
+  },
+  "sameAs": [
+    "https://github.com/Master-Mind-code/",
+    "https://www.linkedin.com/in/niangoran-jean-dominique-ebah-0b3594325/"
+  ],
+  "knowsAbout": [
+    "React", "TypeScript", "NestJS", "Flutter", ".NET", "Python",
+    "PostgreSQL", "ISO 8583", "Monétique bancaire", "Trading algorithmique",
+    "Intelligence artificielle", "Cybersécurité"
+  ]
+}
+</script>
 </head>
 <body>
+
+<a href="#top" class="skip-link">Aller au contenu</a>
 
 <template id="__bundler_thumbnail" data-bg-color="#070810">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +105,7 @@
 <!-- NAV -->
 <nav>
   <a href="#top" class="nav-brand"><span class="brand-dot"></span>Dominique<span style="color:var(--violet)">.</span>Ebah</a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="#projets">Projets</a></li>
     <li><a href="#case">Étude de cas</a></li>
     <li><a href="#trading">Trading</a></li>
@@ -55,7 +114,7 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact" class="nav-cta">Me contacter</a></li>
   </ul>
-  <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links"><i class="fa-solid fa-bars"></i></button>
 </nav>
 
 <!-- HERO -->
@@ -589,7 +648,7 @@
 <footer>
   <div class="f-brand"><span class="brand-dot"></span>Dominique<span style="color:var(--violet)">.</span>Ebah</div>
   <p>Développeur Full Stack &amp; Ingénieur Logiciel Abidjan, Côte d'Ivoire</p>
-  <p style="font-size:0.75rem">© 2026 Jean-Dominique Ebah Niangoran Conçu &amp; développé avec soin.</p>
+  <p style="font-size:0.75rem">© 2026 Niangoran Jean-Dominique Ebah Conçu &amp; développé avec soin.</p>
 </footer>
 
 <script src="assets/neural.js"></script>

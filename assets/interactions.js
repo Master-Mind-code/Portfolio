@@ -45,15 +45,20 @@
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
   if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      links.classList.toggle('open');
-      const open = links.classList.contains('open');
+    function setMenu(open) {
+      links.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
       toggle.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    }
+    toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+    links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && links.classList.contains('open')) {
+        setMenu(false);
+        toggle.focus();
+      }
     });
-    links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
-    }));
   }
 
   /* ---------- Scroll reveal ---------- */
@@ -136,9 +141,9 @@
     const sio = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
-          Object.values(navLinkMap).forEach((a) => a.style.color = '');
+          Object.values(navLinkMap).forEach((a) => { a.style.color = ''; a.removeAttribute('aria-current'); });
           const link = navLinkMap[e.target.id];
-          if (link) link.style.color = 'var(--text)';
+          if (link) { link.style.color = 'var(--text)'; link.setAttribute('aria-current', 'true'); }
         }
       });
     }, { threshold: 0.3, rootMargin: '-30% 0px -50% 0px' });
