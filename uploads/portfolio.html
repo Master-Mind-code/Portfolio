@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dominique Ebahn - Portfolio Developpeur</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --bg2: #13161e;
+      --bg3: #1a1e29;
+      --border: #252938;
+      --accent: #6c63ff;
+      --accent2: #00d4aa;
+      --accent3: #ff6b6b;
+      --accent4: #ffd166;
+      --text: #e8eaf0;
+      --text2: #9aa0b4;
+      --text3: #636a82;
+      --radius: 14px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,15,20,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--text2); text-decoration: none;
+      font-size: 0.85rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 80px 2rem 4rem;
+      max-width: 1200px; margin: 0 auto;
+      gap: 4rem;
+    }
+    .hero-text { flex: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(108,99,255,0.12);
+      border: 1px solid rgba(108,99,255,0.3);
+      color: var(--accent);
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+    .hero-badge i { font-size: 0.75rem; }
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: 1.1rem; color: var(--text2);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+    .hero-desc {
+      font-size: 0.95rem; color: var(--text2);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #5a52e8; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+    /* HERO PHOTO */
+    .hero-photo { flex-shrink: 0; }
+    .photo-frame {
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      padding: 4px;
+      position: relative;
+    }
+    .photo-inner {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--bg3);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .photo-inner img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+    }
+    /* Placeholder si pas de photo */
+    .photo-placeholder {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 5rem; font-weight: 700;
+      color: var(--accent);
+    }
+    .photo-glow {
+      position: absolute; inset: -20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,99,255,0.15) 0%, transparent 70%);
+      z-index: -1;
+    }
+    .stats-row {
+      display: flex; gap: 1.5rem;
+      margin-top: 2rem; flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem; font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+    .stat-label { font-size: 0.75rem; color: var(--text3); }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .section-tag::before, .section-tag::after {
+      content: '';
+      display: block; width: 30px; height: 1px;
+      background: var(--accent); opacity: 0.4;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .section-sub { color: var(--text2); font-size: 1rem; max-width: 560px; margin: 0 auto; }
+
+    /* SKILLS CHIPS */
+    .skills-section { background: var(--bg2); }
+    .skills-grid {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      justify-content: center;
+    }
+    .skill-chip {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.82rem; color: var(--text2);
+      transition: all 0.2s;
+    }
+    .skill-chip:hover { border-color: var(--accent); color: var(--text); }
+    .skill-chip i { font-size: 0.75rem; }
+    .skill-chip.accent { border-color: rgba(108,99,255,0.4); color: var(--accent); }
+    .skill-chip.green { border-color: rgba(0,212,170,0.4); color: var(--accent2); }
+    .skill-chip.red { border-color: rgba(255,107,107,0.4); color: var(--accent3); }
+    .skill-chip.yellow { border-color: rgba(255,209,102,0.4); color: var(--accent4); }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .project-card.purple::before { background: linear-gradient(90deg, var(--accent), #a855f7); }
+    .project-card.teal::before { background: linear-gradient(90deg, var(--accent2), #06b6d4); }
+    .project-card.orange::before { background: linear-gradient(90deg, #f97316, var(--accent4)); }
+    .project-card.red::before { background: linear-gradient(90deg, var(--accent3), #f43f5e); }
+    .project-card.blue::before { background: linear-gradient(90deg, #3b82f6, #6366f1); }
+    .project-card.green::before { background: linear-gradient(90deg, #22c55e, var(--accent2)); }
+    .project-card.pink::before { background: linear-gradient(90deg, #ec4899, #a855f7); }
+    .project-card:hover {
+      border-color: rgba(108,99,255,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    }
+    .project-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .project-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .project-icon.purple { background: rgba(108,99,255,0.15); color: var(--accent); }
+    .project-icon.teal { background: rgba(0,212,170,0.12); color: var(--accent2); }
+    .project-icon.orange { background: rgba(249,115,22,0.12); color: #f97316; }
+    .project-icon.red { background: rgba(255,107,107,0.12); color: var(--accent3); }
+    .project-icon.blue { background: rgba(59,130,246,0.12); color: #3b82f6; }
+    .project-icon.green { background: rgba(34,197,94,0.12); color: #22c55e; }
+    .project-icon.pink { background: rgba(236,72,153,0.12); color: #ec4899; }
+    .project-badge {
+      font-size: 0.7rem; font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+    .badge-prod { background: rgba(0,212,170,0.12); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+    .badge-wip { background: rgba(255,209,102,0.12); color: var(--accent4); border: 1px solid rgba(255,209,102,0.3); }
+    .project-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem; font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .project-desc {
+      font-size: 0.85rem; color: var(--text2);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      color: var(--text3);
+    }
+    .project-metrics {
+      display: flex; gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .metric { font-size: 0.78rem; color: var(--text3); display: flex; align-items: center; gap: 0.3rem; }
+    .metric i { font-size: 0.7rem; }
+    .metric strong { color: var(--text2); }
+
+    /* EXTRA SECTIONS */
+    .extra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .extra-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all 0.25s;
+    }
+    .extra-card:hover { border-color: rgba(108,99,255,0.3); transform: translateY(-2px); }
+    .extra-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem; font-weight: 600;
+      margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .extra-card-title i { color: var(--accent); }
+    .extra-list { list-style: none; }
+    .extra-list li {
+      font-size: 0.83rem; color: var(--text2);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      line-height: 1.5;
+    }
+    .extra-list li:last-child { border-bottom: none; }
+    .extra-list li i { color: var(--accent2); margin-top: 0.15rem; flex-shrink: 0; font-size: 0.7rem; }
+
+    /* SKILLS CUSTOM */
+    .skills-custom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .skill-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      text-align: center;
+      transition: all 0.25s;
+    }
+    .skill-card:hover { border-color: rgba(108,99,255,0.4); transform: translateY(-2px); }
+    .skill-card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .skill-card-name {
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .skill-card-desc {
+      font-size: 0.73rem; color: var(--text3);
+      line-height: 1.4;
+    }
+
+    /* CONTACT */
+    .contact-section { background: var(--bg2); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .contact-info h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem; font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .contact-info p { color: var(--text2); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.7; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.75rem;
+      color: var(--text2); text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .contact-link i { width: 18px; color: var(--accent); }
+    .contact-link:hover { color: var(--accent); }
+    .contact-cta {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .contact-cta h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .contact-cta p { color: var(--text2); font-size: 0.88rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text3);
+      font-size: 0.82rem;
+    }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 2rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { flex-direction: column-reverse; text-align: center; gap: 2rem; padding-top: 100px; }
+      .hero-desc, .hero-buttons { max-width: 100%; }
+      .hero-buttons { justify-content: center; }
+      .photo-frame { width: 200px; height: 200px; }
+      .stats-row { justify-content: center; }
+      .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">Dominique<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#trading">Trading</a></li>
+    <li><a href="#ia">IA</a></li>
+    <li><a href="#cybersec">Cybersec</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="padding-top: 120px;">
+  <div class="hero-text">
+    <div class="hero-badge">
+      <i class="fa-solid fa-circle-dot fa-beat" style="color:#00d4aa;"></i>
+      Disponible pour des missions
+    </div>
+    <h1>
+      Jean-Dominique<br/>
+      <span class="highlight">Ebah Niangoran</span>
+    </h1>
+    <p class="hero-subtitle">Developpeur Full Stack &amp; Ingenieur Logiciel</p>
+    <p class="hero-desc">
+      Specialiste en developpement d'applications, plateformes bancaires, plateformes digitales, bots de trading algorithmique et systemes intelligents. Base en Cote d'Ivoire, je construis des solutions robustes pour l'Afrique de l'Ouest et au-dela.
+    </p>
+    <div class="hero-buttons">
+      <a href="#projets" class="btn btn-primary">
+        <i class="fa-solid fa-folder-open"></i> Voir les projets
+      </a>
+      <a href="#contact" class="btn btn-outline">
+        <i class="fa-solid fa-paper-plane"></i> Me contacter
+      </a>
+    </div>
+    <div class="stats-row">
+      <div class="stat-item">
+        <span class="stat-num">9+</span>
+        <span class="stat-label">Projets realises</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">150+</span>
+        <span class="stat-label">Endpoints API</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Projets en prod</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">6</span>
+        <span class="stat-label">Skills IA crees</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <div class="photo-frame">
+      <div class="photo-inner">
+        <!--
+          REMPLACER LE SRC CI-DESSOUS PAR LE CHEMIN DE TA PHOTO.
+          Exemple: <img src="photo.png" alt="Dominique Ebahn" />
+          Ou mettre l'image dans le meme dossier et ecrire: src="photo.png"
+        -->
+        <img src="photo.png" alt="Dominique Ebahn Niangoran"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'photo-placeholder\'>DE</span>'" />
+      </div>
+      <div class="photo-glow"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TECH STACK -->
+<section class="skills-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Stack technique</div>
+      <h2 class="section-title">Technologies maitrisees</h2>
+    </div>
+    <div class="skills-grid">
+      <span class="skill-chip accent"><i class="fa-brands fa-react"></i> React 19 / TypeScript</span>
+      <span class="skill-chip accent"><i class="fa-brands fa-node-js"></i> NestJS / Express.js</span>
+      <span class="skill-chip accent"><i class="fa-solid fa-mobile-screen"></i> Flutter / Dart</span>
+      <span class="skill-chip accent"><i class="fa-brands fa-microsoft"></i> .NET / C# / WinForms</span>
+      <span class="skill-chip accent"><i class="fa-brands fa-python"></i> Python</span>
+      <span class="skill-chip green"><i class="fa-solid fa-database"></i> PostgreSQL / MySQL</span>
+      <span class="skill-chip green"><i class="fa-solid fa-server"></i> Supabase / Firebase</span>
+      <span class="skill-chip green"><i class="fa-brands fa-docker"></i> Docker / Docker Compose</span>
+      <span class="skill-chip green"><i class="fa-solid fa-wind"></i> TailwindCSS / Radix UI</span>
+      <span class="skill-chip yellow"><i class="fa-solid fa-chart-line"></i> MetaTrader 5 / Pine Script</span>
+      <span class="skill-chip yellow"><i class="fa-solid fa-plug"></i> REST API / WebSockets</span>
+      <span class="skill-chip red"><i class="fa-solid fa-shield-halved"></i> ISO 8583 / PCI-DSS</span>
+      <span class="skill-chip red"><i class="fa-solid fa-bug"></i> Burp Suite / Pentest</span>
+      <span class="skill-chip"><i class="fa-solid fa-cube"></i> Vite / React Query</span>
+      <span class="skill-chip"><i class="fa-solid fa-code-branch"></i> Git / CI-CD</span>
+      <span class="skill-chip"><i class="fa-solid fa-layer-group"></i>  TypeORM</span>
+      <span class="skill-chip"><i class="fa-brands fa-figma"></i> Figma / UI Design</span>
+      <span class="skill-chip"><i class="fa-solid fa-wand-magic-sparkles"></i> Claude Code / Cowork</span>
+      <span class="skill-chip"><i class="fa-solid fa-brain"></i> ChatGPT / Gemini / Ollama</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Portfolio</div>
+      <h2 class="section-title">Projets de developpement</h2>
+      <p class="section-sub">Applications full-stack, systemes bancaires et plateformes digitales construits pour l'Afrique de l'Ouest</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- CardFlow UEMOA -->
+      <div class="project-card blue">
+        <div class="project-header">
+          <div class="project-icon blue"><i class="fa-solid fa-credit-card"></i></div>
+          <span class="project-badge badge-prod"><i class="fa-solid fa-circle fa-beat" style="font-size:0.5rem;"></i> Production</span>
+        </div>
+        <h3 class="project-title">CardFlow UEMOA</h3>
+        <p class="project-desc">
+          Application web de gestion du cycle de vie des cartes bancaires pour une banque ivoirienne. Conforme aux normes GIM UEMOA avec 10 modules complets, de la commande jusqu'a l'enrolement biometrique et l'installation d'applets.
+        </p>
+        <div class="project-tags">
+          <span class="tag">React 18</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">TailwindCSS</span>
+          <span class="tag">Radix UI</span>
+          <span class="tag">React Query</span>
+          <span class="tag">Zod</span>
+          <span class="tag">JWT</span>
+          <span class="tag">GIM UEMOA</span>
+        </div>
+        <div class="project-metrics">
+          <span class="metric"><i class="fa-solid fa-plug"></i> <strong>150+</strong> endpoints API</span>
+          <span class="metric"><i class="fa-solid fa-cubes"></i> <strong>50+</strong> composants</span>
+          <span class="metric"><i class="fa-solid fa-bolt"></i> Bundle <strong>-81%</strong></span>
+        </div>
+      </div>
+
+      <!-- GAB UNACOOPEC -->
+      <div class="project-card red">
+        <div class="project-header">
+          <div class="project-icon red"><i class="fa-solid fa-building-columns"></i></div>
+          <span class="project-badge badge-wip"><i class="fa-solid fa-gear fa-spin" style="font-size:0.5rem;"></i> En cours</span>
+        </div>
+        <h3 class="project-title">Systeme GAB UNACOOPEC-CI</h3>
+        <p class="project-desc">
+          Logiciel complet de Guichet Automatique Bancaire pour UNACOOPEC-CI. 14 ecrans kiosque, integration hardware complete (distributeur GRG, lecteur carte, capteur biometrique SecuGen), moteur monetique ISO 8583 code de zero et mode kiosque Windows.
+        </p>
+        <div class="project-tags">
+          <span class="tag">.NET 4.7.2</span>
+          <span class="tag">ASP.NET Core 8</span>
+          <span class="tag">WinForms</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">ISO 8583</span>
+          <span class="tag">PCI-DSS</span>
+          <span class="tag">WiX 4</span>
+          <span class="tag">ESC/POS</span>
+        </div>
+        <div class="project-metrics">
+          <span class="metric"><i class="fa-solid fa-display"></i> <strong>14</strong> ecrans</span>
+          <span class="metric"><i class="fa-solid fa-microchip"></i> <strong>4</strong> composants HW</span>
+          <span class="metric"><i class="fa-solid fa-vial"></i> <strong>33</strong> tests E2E</span>
+        </div>
+      </div>
+
+      <!-- O-Detox -->
+      <div class="project-card green">
+        <div class="project-header">
+          <div class="project-icon green"><i class="fa-solid fa-leaf"></i></div>
+          <span class="project-badge badge-prod"><i class="fa-solid fa-circle fa-beat" style="font-size:0.5rem;"></i> Production</span>
+        </div>
+        <h3 class="project-title">O-Detox E-Commerce</h3>
+        <p class="project-desc">
+          Application e-commerce moderne pour produits de detoxification naturels. Catalogue produits, panier interactif, commande via WhatsApp, panel d'administration avec dashboard KPIs et analytics avances (Chart.js).
+        </p>
+        <div class="project-tags">
+          <span class="tag">React 19</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Chart.js</span>
+          <span class="tag">Context API</span>
+          <span class="tag">RLS</span>
+        </div>
+        <div class="project-metrics">
+          <span class="metric"><i class="fa-solid fa-database"></i> <strong>3</strong> tables + RLS</span>
+          <span class="metric"><i class="fa-solid fa-chart-bar"></i> Analytics <strong>temps reel</strong></span>
+          <span class="metric"><i class="fa-brands fa-whatsapp"></i> WhatsApp checkout</span>
+        </div>
+      </div>
+
+      <!-- Belife APIs -->
+      <div class="project-card teal">
+        <div class="project-header">
+          <div class="project-icon teal"><i class="fa-solid fa-shield-heart"></i></div>
+          <span class="project-badge badge-prod"><i class="fa-solid fa-circle fa-beat" style="font-size:0.5rem;"></i> Production</span>
+        </div>
+        <h3 class="project-title">Belife APIs - Micro-Assurance</h3>
+        <p class="project-desc">
+          Module de gestion des prestations pour Prudential Belife, compagnie d'assurance ivoirienne. Demandes de prestations via canal USSD, validation d'eligibilite automatisee et paiement direct sur comptes MTN Mobile Money.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Backend</span>
+          <span class="tag">REST API</span>
+          <span class="tag">MTN Mobile Money</span>
+          <span class="tag">USSD</span>
+          <span class="tag">Audit Trail</span>
+        </div>
+        <div class="project-metrics">
+          <span class="metric"><i class="fa-solid fa-mobile-screen"></i> Canal <strong>USSD</strong></span>
+          <span class="metric"><i class="fa-solid fa-money-bill-transfer"></i> Mobile <strong>Money</strong></span>
+          <span class="metric"><i class="fa-solid fa-file-contract"></i> Conformite <strong>CIMA</strong></span>
+        </div>
+      </div>
+
+      <!-- DroniX -->
+      <div class="project-card orange">
+        <div class="project-header">
+          <div class="project-icon orange"><i class="fa-solid fa-helicopter"></i></div>
+          <span class="project-badge badge-prod"><i class="fa-solid fa-circle fa-beat" style="font-size:0.5rem;"></i> Production</span>
+        </div>
+        <h3 class="project-title">DroniX - Site Web Drones</h3>
+        <p class="project-desc">
+          Site vitrine responsive pour startup ivoirienne specialisee en drones professionnels. 10 sections, animations Framer Motion, Hero avec particules canvas, backend Express.js avec formulaire de contact et base de donnees.
+        </p>
+        <div class="project-tags">
+          <span class="tag">React 19</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">TailwindCSS</span>
+          <span class="tag">Framer Motion</span>
+          <span class="tag">Express.js</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag"></span>
+          <span class="tag">PM2</span>
+        </div>
+        <div class="project-metrics">
+          <span class="metric"><i class="fa-solid fa-gauge-high"></i> Lighthouse <strong>90+</strong></span>
+          <span class="metric"><i class="fa-solid fa-drone"></i> <strong>6</strong> modeles documentes</span>
+          <span class="metric"><i class="fa-solid fa-box"></i> Bundle <strong>&lt;500kb</strong></span>
+        </div>
+      </div>
+
+      <!-- NeoStep -->
+      <div class="project-card purple">
+        <div class="project-header">
+          <div class="project-icon purple"><i class="fa-solid fa-bullseye"></i></div>
+          <span class="project-badge badge-wip"><i class="fa-solid fa-gear fa-spin" style="font-size:0.5rem;"></i> En cours</span>
+        </div>
+        <h3 class="project-title">NeoStep - Gestion d'Objectifs</h3>
+        <p class="project-desc">
+          Application mobile cross-platform de gestion d'objectifs avec collaboration temps reel. Backend NestJS avec WebSockets, frontend Flutter multi-plateforme, notifications Firebase et architecture clean modulaire.
+        </p>
+        <div class="project-tags">
+          <span class="tag">NestJS</span>
+          <span class="tag">Flutter 3</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">WebSockets</span>
+          <span class="tag">JWT</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Swagger</span>
+        </div>
+        <div class="project-metrics">
+          <span class="metric"><i class="fa-solid fa-vial"></i> <strong>27</strong> tests unitaires</span>
+          <span class="metric"><i class="fa-solid fa-mobile"></i> iOS / Android / Web</span>
+          <span class="metric"><i class="fa-solid fa-bolt"></i> Temps <strong>reel</strong></span>
+        </div>
+      </div>
+
+      <!-- DKB Sign -->
+      <div class="project-card pink">
+        <div class="project-header">
+          <div class="project-icon pink"><i class="fa-solid fa-file-signature"></i></div>
+          <span class="project-badge badge-prod"><i class="fa-solid fa-circle fa-beat" style="font-size:0.5rem;"></i> Termine</span>
+        </div>
+        <h3 class="project-title">DKB Sign - Integration API REST</h3>
+        <p class="project-desc">
+          Intégration et tests complets de l'API DkbSign (signature electronique de documents). Multi-signataires cote a cote, correction du bug `documents[]` vers `documents` dans les requetes multipart, collection Postman documentee.
+        </p>
+        <div class="project-tags">
+          <span class="tag">REST API</span>
+          <span class="tag">Postman</span>
+          <span class="tag">E-Signature</span>
+          <span class="tag">OTP</span>
+          <span class="tag">JWT</span>
+        </div>
+        <div class="project-metrics">
+          <span class="metric"><i class="fa-solid fa-signature"></i> Multi-<strong>signataires</strong></span>
+          <span class="metric"><i class="fa-solid fa-bug"></i> Bugs <strong>corriges</strong></span>
+          <span class="metric"><i class="fa-solid fa-book"></i> Postman <strong>doc</strong></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TRADING -->
+<section id="trading" style="background: var(--bg2);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Finance algorithmique</div>
+      <h2 class="section-title">Trading &amp; Systemes SMC</h2>
+      <p class="section-sub">Automatisation du trading avec les concepts Smart Money et MetaTrader 5</p>
+    </div>
+    <div class="extra-grid">
+
+      <div class="extra-card">
+        <h4 class="extra-card-title"><i class="fa-solid fa-robot"></i> Smart Money Bot v3 (MT5)</h4>
+        <ul class="extra-list">
+          <li><i class="fa-solid fa-circle-check"></i> Bot Python connecte a MetaTrader 5 via l'API Exness (XAUUSDm, EURUSDm, GBPUSDm, USDJPYm)</li>
+          <li><i class="fa-solid fa-circle-check"></i> Scoring sur 12 criteres SMC : BOS, CHoCH, FVG, IFVG, liquidite, equilibrium, volume</li>
+          <li><i class="fa-solid fa-circle-check"></i> Gestion du risque 1%/trade, ordres LIMIT uniquement, filtrage sessions London/NY</li>
+          <li><i class="fa-solid fa-circle-check"></i> Detection de setups grade A+ (score 8/12) en conditions de marche reelles</li>
+          <li><i class="fa-solid fa-circle-check"></i> Correction du crash `NoneType` sur `order_send` + guard robuste</li>
+        </ul>
+      </div>
+
+      <div class="extra-card">
+        <h4 class="extra-card-title"><i class="fa-solid fa-telegram"></i> Bot Telegram vers MT5</h4>
+        <ul class="extra-list">
+          <li><i class="fa-solid fa-circle-check"></i> Systeme de trading automatise : bot Python Telegram connecte a MT5</li>
+          <li><i class="fa-solid fa-circle-check"></i> Gestion multi-TP, calcul automatique des lots, gestion des positions</li>
+          <li><i class="fa-solid fa-circle-check"></i> Connecteur MT5 avec breakeven automatique et trailing stop</li>
+          <li><i class="fa-solid fa-circle-check"></i> Alertes Telegram en temps reel sur les signaux</li>
+        </ul>
+      </div>
+
+      <div class="extra-card">
+        <h4 class="extra-card-title"><i class="fa-solid fa-chart-candlestick"></i> Pine Script &amp; Outils</h4>
+        <ul class="extra-list">
+          <li><i class="fa-solid fa-circle-check"></i> Indicateur Pine Script v6 "SMC Visual v5" avec scoring 12 criteres</li>
+          <li><i class="fa-solid fa-circle-check"></i> Analyse FVG XAU/USD avec notation SMC et identification de failles mathematiques</li>
+          <li><i class="fa-solid fa-circle-check"></i> Journal de trading Notion : 22 proprietes, vues multiples, template revue mensuelle</li>
+          <li><i class="fa-solid fa-circle-check"></i> Backtest et validation des strategies sur donnees historiques Gold</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- IA -->
+<section id="ia">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Intelligence Artificielle</div>
+      <h2 class="section-title">IA &amp; Systemes intelligents</h2>
+      <p class="section-sub">Maitrise des outils IA modernes et construction de systemes bases sur l'intelligence artificielle</p>
+    </div>
+    <div class="extra-grid">
+
+      <div class="extra-card">
+        <h4 class="extra-card-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Maitrise des outils IA</h4>
+        <ul class="extra-list">
+          <li><i class="fa-solid fa-circle-check"></i> <strong>Claude Code &amp; Cowork</strong> : automatisation de taches complexes, creation de skills personnalises, gestion de projets multi-fichiers</li>
+          <li><i class="fa-solid fa-circle-check"></i> <strong>ChatGPT</strong> : prompt engineering avance, generation de contenu, aide au developpement</li>
+          <li><i class="fa-solid fa-circle-check"></i> <strong>Google Gemini</strong> : integration dans des projets (chatbot WhatsApp, n8n)</li>
+          <li><i class="fa-solid fa-circle-check"></i> <strong>Ollama (local)</strong> : deploiement de modeles LLM en local sur machine sans GPU dedie</li>
+        </ul>
+      </div>
+
+      <div class="extra-card">
+        <h4 class="extra-card-title"><i class="fa-solid fa-brain"></i> Jarvis - Assistant IA Personnel</h4>
+        <ul class="extra-list">
+          <li><i class="fa-solid fa-circle-check"></i> Assistant IA personnel construit avec FastAPI + WebSocket + Python</li>
+          <li><i class="fa-solid fa-circle-check"></i> Interface visuelle avec sphere neurale 3D animee</li>
+          <li><i class="fa-solid fa-circle-check"></i> Communication en temps reel via WebSocket</li>
+          <li><i class="fa-solid fa-circle-check"></i> Architecture extensible pour plugins et modules supplementaires</li>
+        </ul>
+      </div>
+
+      <div class="extra-card">
+        <h4 class="extra-card-title"><i class="fa-solid fa-atom"></i> Interface Ollama &amp; Projets IA</h4>
+        <ul class="extra-list">
+          <li><i class="fa-solid fa-circle-check"></i> Chat HTML + visualisation Canvas 3D, particules Fibonacci, formes morphing</li>
+          <li><i class="fa-solid fa-circle-check"></i> Optimise pour Lenovo 32GB sans GPU dedie</li>
+          <li><i class="fa-solid fa-circle-check"></i> Chatbot WhatsApp n8n pour Mr Ouattara Store (Google Gemini, localisation ivoirienne)</li>
+          <li><i class="fa-solid fa-circle-check"></i> Strategie ManyChat : funnels Instagram/WhatsApp pour boutiques e-commerce</li>
+        </ul>
+      </div>
+
+      <div class="extra-card">
+        <h4 class="extra-card-title"><i class="fa-solid fa-store"></i> Business Digital avec IA</h4>
+        <ul class="extra-list">
+          <li><i class="fa-solid fa-circle-check"></i> Systeme de Manifestation Pro : app HTML interactive + ebook 40+ pages + templates Notion</li>
+          <li><i class="fa-solid fa-circle-check"></i> Vendu a 2 500 FCFA sur Chariow, paiement Mobile Money</li>
+          <li><i class="fa-solid fa-circle-check"></i> Landing page IA Toolkit : 3 tiers tarifaires, hebergee sur Netlify / GitHub Pages</li>
+          <li><i class="fa-solid fa-circle-check"></i> Rapport PDF : 12 opportunites de produits digitaux adaptes au marche africain</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CYBERSEC -->
+<section id="cybersec" style="background: var(--bg2);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Securite offensive &amp; defensive</div>
+      <h2 class="section-title">Cybersecurite &amp; CTF</h2>
+      <p class="section-sub">Pentest, hacking ethique, CTF et audit de securite applicative</p>
+    </div>
+    <div class="extra-grid">
+
+      <div class="extra-card">
+        <h4 class="extra-card-title"><i class="fa-solid fa-magnifying-glass-chart"></i> Outils &amp; Reconnaissance</h4>
+        <ul class="extra-list">
+          <li><i class="fa-solid fa-circle-check"></i> <strong>msrscrap</strong> : outil de reconnaissance developpe et transforme en toolkit 1500+ lignes</li>
+          <li><i class="fa-solid fa-circle-check"></i> Utilisation avancee de Burp Suite : demo de data tampering (Moussouris Program)</li>
+          <li><i class="fa-solid fa-circle-check"></i> Maitrise de Nmap, Metasploit, WPScan pour les audits de securite</li>
+          <li><i class="fa-solid fa-circle-check"></i> Pentest web : XSS, injection SQL, OWASP Top 10</li>
+        </ul>
+      </div>
+
+      <div class="extra-card">
+        <h4 class="extra-card-title"><i class="fa-solid fa-flag"></i> EcowasCTF - ByteBreakers</h4>
+        <ul class="extra-list">
+          <li><i class="fa-solid fa-circle-check"></i> Cryptographie : RSA cube root attack, chiffrement Cesar, Morse, Adinkra</li>
+          <li><i class="fa-solid fa-circle-check"></i> Steganographie : stegsnow, canal HTTP covert, AES decrypt</li>
+          <li><i class="fa-solid fa-circle-check"></i> Blockchain : challenge Merkle Tree "Bit2Bit"</li>
+          <li><i class="fa-solid fa-circle-check"></i> Participation active sous l'equipe ByteBreakers</li>
+        </ul>
+      </div>
+
+      <div class="extra-card">
+        <h4 class="extra-card-title"><i class="fa-solid fa-lock"></i> Audit GAB UNACOOPEC</h4>
+        <ul class="extra-list">
+          <li><i class="fa-solid fa-circle-check"></i> Audit de securite complet : 36 failles identifiees (7 critiques, 9 hautes, 12 moyennes)</li>
+          <li><i class="fa-solid fa-circle-check"></i> Vulnerabilite critique : bypass biometrique via MATCH_ON_CARD_OK sans signature</li>
+          <li><i class="fa-solid fa-circle-check"></i> IDOR sur CustomerId, PAN logge en clair (violation PCI-DSS), race condition sur soldes</li>
+          <li><i class="fa-solid fa-circle-check"></i> Rapport d'audit complet remis + plan de remediation priorise</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS PERSONNALISES -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Claude AI</div>
+      <h2 class="section-title">Skills IA crees</h2>
+      <p class="section-sub">Skills personnalises developpes et deployes dans l'ecosysteme Claude Cowork</p>
+    </div>
+    <div class="skills-custom-grid">
+      <div class="skill-card">
+        <span class="skill-card-icon" style="color: #6c63ff;"><i class="fa-solid fa-helmet-safety"></i></span>
+        <div class="skill-card-name">tech-architect-mentor</div>
+        <div class="skill-card-desc">Architecture logicielle, choix technologique, DevOps et code structure</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-card-icon" style="color: #ffd166;"><i class="fa-solid fa-chart-line"></i></span>
+        <div class="skill-card-name">smart-money-mentor</div>
+        <div class="skill-card-desc">Trading SMC, analyse marche, signaux XAU/USD, gestion du capital</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-card-icon" style="color: #00d4aa;"><i class="fa-solid fa-bullhorn"></i></span>
+        <div class="skill-card-name">digital-marketing-mentor</div>
+        <div class="skill-card-desc">Funnel, copywriting, page de vente, scaling et acquisition client</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-card-icon" style="color: #ff6b6b;"><i class="fa-solid fa-shield-halved"></i></span>
+        <div class="skill-card-name">cybersec-mentor</div>
+        <div class="skill-card-desc">Pentest, CTF, vulnerabilites, audit et securisation d'applications</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-card-icon" style="color: #a78bfa;"><i class="fa-solid fa-compass"></i></span>
+        <div class="skill-card-name">life-clarity-mentor</div>
+        <div class="skill-card-desc">Clarte personnelle, decisions strategiques, vision de vie</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-card-icon" style="color: #f59e0b;"><i class="fa-solid fa-coins"></i></span>
+        <div class="skill-card-name">wealth-mentor</div>
+        <div class="skill-card-desc">Gestion financiere, investissement, construction de patrimoine</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Collaboration</div>
+      <h2 class="section-title">Travaillons ensemble</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Disponible pour vos projets</h3>
+        <p>
+          Developpeur full-stack base en Cote d'Ivoire, je suis disponible pour des missions de developpement d'applications, d'audit de securite, d'integration API ou de conseil technique. Je travaille sur des projets locaux et internationaux.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:ebahniangoran@gmail.com" class="contact-link">
+            <i class="fa-solid fa-envelope"></i> ebahniangoran@gmail.com
+          </a>
+          <a href="https://ia-toolkit.netlify.app" class="contact-link" target="_blank">
+            <i class="fa-solid fa-globe"></i> ia-toolkit.netlify.app
+          </a>
+          <a href="https://www.linkedin.com/in/niangoran-jean-dominique-ebah-0b3594325/" class="contact-link">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://github.com/Master-Mind-code/" class="contact-link" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+      <div class="contact-cta">
+        <h4><i class="fa-solid fa-handshake" style="color: var(--accent); margin-right: 0.5rem;"></i> Domaines d'intervention</h4>
+        <p>Applications web full-stack, systemes bancaires &amp; monetiques, bots de trading algorithmique, integration API, audit de securite, IA &amp; automatisation, conseils techniques.</p>
+        <a href="mailto:ebahniangoran@gmail.com" class="btn btn-primary" style="width: 100%; justify-content: center;">
+          <i class="fa-solid fa-paper-plane"></i> Envoyer un email
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <i class="fa-solid fa-code" style="color: var(--accent);"></i>
+    Dominique Ebahn Niangoran &ndash; Developpeur Full Stack &amp; Ingenieur Logiciel &ndash; Abidjan, Cote d'Ivoire
+  </p>
+  <p style="margin-top: 0.4rem; font-size: 0.75rem;">
+    Portfolio 2026 &mdash; Construit avec HTML, CSS et <i class="fa-solid fa-heart" style="color: var(--accent3);"></i>
+  </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA Toolkit by Dominique  Fais des revenus avec l'IA dès ce soir</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4A017;
+    --gold-light: #F0C040;
+    --gold-dim: rgba(212,160,23,0.15);
+    --navy: #1A1A2E;
+    --navy-mid: #16213E;
+    --navy-light: #0F3460;
+    --red: #E94560;
+    --white: #F5F0E8;
+    --gray: #A0A0B0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+    background: rgba(26,26,46,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212,160,23,0.12);
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--gold);
+  }
+  .logo span { color: var(--white); }
+
+  nav a.cta-nav {
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 10px 22px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  nav a.cta-nav:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 5% 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 40%, rgba(212,160,23,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 10% 80%, rgba(233,69,96,0.06) 0%, transparent 60%),
+      linear-gradient(160deg, #1A1A2E 0%, #0F0F20 100%);
+    z-index: -1;
+  }
+
+  /* diagonal gold line */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: 10%;
+    width: 1px;
+    height: 120vh;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    opacity: 0.2;
+    transform: rotate(-15deg);
+  }
+
+  .hero-content {
+    max-width: 680px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(212,160,23,0.3);
+    color: var(--gold);
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .badge::before { content: '◆'; font-size: 0.6em; }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--gold);
+    position: relative;
+    display: inline-block;
+  }
+  h1 em::after {
+    content: '';
+    position: absolute;
+    bottom: 2px; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(245,240,232,0.7);
+    max-width: 540px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.25s;
+    box-shadow: 0 8px 32px rgba(212,160,23,0.3);
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(212,160,23,0.4); }
+  .btn-primary svg { transition: transform 0.2s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 16px 24px;
+    border-radius: 4px;
+    border: 1px solid rgba(245,240,232,0.2);
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-proof {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(245,240,232,0.08);
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+  .proof-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .proof-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: var(--gold);
+    letter-spacing: -0.03em;
+  }
+  .proof-label {
+    font-size: 0.78rem;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .proof-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(245,240,232,0.1);
+  }
+
+  /* ── PAIN SECTION ── */
+  .pain {
+    padding: 100px 5%;
+    background: linear-gradient(180deg, #0F0F20 0%, #1A1A2E 100%);
+    position: relative;
+  }
+
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 960px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .pain h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .pain-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .pain-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: rgba(245,240,232,0.75);
+    font-size: 0.97rem;
+  }
+  .pain-list li::before {
+    content: '✗';
+    color: var(--red);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .pain-solution {
+    background: linear-gradient(135deg, rgba(212,160,23,0.08), rgba(212,160,23,0.03));
+    border: 1px solid rgba(212,160,23,0.2);
+    border-radius: 8px;
+    padding: 36px;
+  }
+  .pain-solution h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--gold);
+  }
+  .solution-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .solution-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .solution-list li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── PRODUCTS ── */
+  .products {
+    padding: 100px 5%;
+    position: relative;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 64px;
+  }
+
+  .section-header h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-header p {
+    color: rgba(245,240,232,0.6);
+    font-size: 1rem;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .product-card {
+    background: linear-gradient(135deg, #1E1E38, #16163A);
+    border: 1px solid rgba(245,240,232,0.07);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(212,160,23,0.35);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .product-card.featured {
+    border-color: rgba(212,160,23,0.4);
+    background: linear-gradient(135deg, #221E38, #1A1838);
+  }
+
+  .featured-tag {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Syne', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  .product-thumb {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.9);
+    transition: filter 0.3s;
+  }
+  .product-card:hover .product-thumb { filter: brightness(1); }
+
+  .product-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .product-category {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .product-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  .product-desc {
+    font-size: 0.87rem;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.6;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+
+  .product-pricing {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .price-current {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--gold);
+  }
+
+  .price-original {
+    font-size: 0.9rem;
+    color: var(--gray);
+    text-decoration: line-through;
+  }
+
+  .price-badge {
+    background: rgba(233,69,96,0.15);
+    color: var(--red);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 2px;
+    border: 1px solid rgba(233,69,96,0.3);
+  }
+
+  .btn-buy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 13px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-buy:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .product-card:not(.featured) .btn-buy {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+  }
+  .product-card:not(.featured) .btn-buy:hover {
+    background: var(--gold-dim);
+  }
+
+  .payment-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    justify-content: center;
+  }
+  .pay-badge {
+    background: rgba(245,240,232,0.06);
+    color: rgba(245,240,232,0.5);
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── FEATURES ── */
+  .features {
+    padding: 100px 5%;
+    background: #0F0F20;
+  }
+
+  .features-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .features h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .features p.lead {
+    color: rgba(245,240,232,0.65);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .feature-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(212,160,23,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .feature-text h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .feature-text p {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.5;
+  }
+
+  .features-visual {
+    position: relative;
+  }
+
+  .modules-card {
+    background: linear-gradient(135deg, #1E1E38, #16163A);
+    border: 1px solid rgba(212,160,23,0.15);
+    border-radius: 10px;
+    padding: 28px;
+  }
+
+  .modules-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .module-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(245,240,232,0.06);
+  }
+  .module-row:last-child { border-bottom: none; }
+
+  .module-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .module-count {
+    background: var(--gold-dim);
+    color: var(--gold);
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 30px;
+  }
+
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(212,160,23,0.2);
+  }
+  .total-label {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--gold);
+  }
+  .total-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--gold);
+  }
+
+  /* ── TESTIMONIAL / TRUST ── */
+  .trust {
+    padding: 100px 5%;
+    position: relative;
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .trust-card {
+    background: linear-gradient(135deg, #1E1E38, #16163A);
+    border: 1px solid rgba(245,240,232,0.07);
+    border-radius: 8px;
+    padding: 28px;
+  }
+
+  .trust-card .stars {
+    color: var(--gold);
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+    letter-spacing: 2px;
+  }
+
+  .trust-card p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: rgba(245,240,232,0.75);
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .trust-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+    border: 1.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .author-info strong {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .author-info span {
+    font-size: 0.75rem;
+    color: var(--gray);
+  }
+
+  /* ── FAQ ── */
+  .faq {
+    padding: 100px 5%;
+    background: #0F0F20;
+  }
+
+  .faq-list {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(245,240,232,0.08);
+  }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--white);
+    text-align: left;
+    padding: 22px 0;
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: color 0.2s;
+  }
+  .faq-question:hover { color: var(--gold); }
+
+  .faq-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(245,240,232,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+    line-height: 1;
+    transition: all 0.2s;
+    color: var(--gold);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s;
+    font-size: 0.92rem;
+    color: rgba(245,240,232,0.65);
+    line-height: 1.7;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+    padding-bottom: 20px;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--gold); }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    padding: 120px 5%;
+    text-align: center;
+    background: linear-gradient(180deg, #1A1A2E 0%, #0F0F20 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,160,23,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .final-cta h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    max-width: 640px;
+    margin: 0 auto 24px;
+  }
+
+  .final-cta p {
+    color: rgba(245,240,232,0.6);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+
+  .final-cta .btn-primary {
+    font-size: 1.1rem;
+    padding: 18px 40px;
+  }
+
+  .guarantee {
+    margin-top: 24px;
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0A0A18;
+    padding: 40px 5%;
+    border-top: 1px solid rgba(245,240,232,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer .logo { font-size: 1rem; }
+
+  footer p {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.3);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .pain-grid, .features-inner { grid-template-columns: 1fr; gap: 40px; }
+    .products-grid { grid-template-columns: 1fr; max-width: 480px; }
+    .trust-grid { grid-template-columns: 1fr; max-width: 480px; }
+    nav a.cta-nav { display: none; }
+  }
+  @media (max-width: 600px) {
+    .hero-proof { flex-wrap: wrap; }
+    .proof-divider { display: none; }
+    .pain { padding: 64px 5%; }
+    .products { padding: 64px 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">IA Toolkit <span>by Dominique</span></div>
+  <a href="https://nxgkjqky.mychariow.shop" class="cta-nav" target="_blank">Voir les packs →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="badge">Conçu 100% pour l'Afrique</div>
+    <h1>Fais des <em>revenus réels</em><br>avec l'IA. Dès ce soir.</h1>
+    <p class="hero-sub">
+      Des packs de prompts opérationnels, testés sur le terrain africain. ChatGPT, Claude, Mobile Money, WhatsApp  tout ce qu'il faut pour passer de l'idée au lancement.
+    </p>
+    <div class="hero-cta">
+      <a href="#products" class="btn-primary">
+        Découvrir les packs
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://nxgkjqky.mychariow.shop" class="btn-ghost" target="_blank">Voir le store ↗</a>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-item">
+        <span class="proof-num">200+</span>
+        <span class="proof-label">Prompts testés</span>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-item">
+        <span class="proof-num">26+</span>
+        <span class="proof-label">Clients satisfaits</span>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-item">
+        <span class="proof-num">-80%</span>
+        <span class="proof-label">Prix de lancement</span>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-item">
+        <span class="proof-num">8 pays</span>
+        <span class="proof-label">Afrique de l'Ouest</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="pain-grid">
+    <div class="reveal">
+      <div class="section-label">Le problème réel</div>
+      <h2>Tu utilises l'IA.<br>Mais ça ne rapporte rien.</h2>
+      <ul class="pain-list">
+        <li>Tu obtiens des réponses génériques inutilisables en Afrique</li>
+        <li>Tu perds du temps à reformuler sans jamais avoir le bon résultat</li>
+        <li>Les guides que tu trouves parlent en dollars, pas en FCFA</li>
+        <li>Personne ne t'explique comment vendre sur WhatsApp avec l'IA</li>
+        <li>Tu n'as pas lancé ton business depuis 6 mois "à cause du manque de temps"</li>
+      </ul>
+    </div>
+    <div class="pain-solution reveal">
+      <h3>La solution : des prompts qui fonctionnent ICI.</h3>
+      <ul class="solution-list">
+        <li>Contextualisés pour l'Afrique de l'Ouest  FCFA, Mobile Money, marchés locaux</li>
+        <li>Prêts à copier-coller  pas de reformulation, juste des résultats</li>
+        <li>Testés sur de vrais business ivoiriens, sénégalais, camerounais</li>
+        <li>De l'idée au premier client en moins d'une semaine</li>
+        <li>Paiement Orange Money & Wave  accessible depuis ton téléphone</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-header reveal">
+    <div class="section-label">Les packs disponibles</div>
+    <h2>Choisis ton niveau de départ</h2>
+    <p>Tous les packs incluent un accès à vie, les mises à jour gratuites, et un téléchargement immédiat.</p>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- STARTER -->
+    <div class="product-card reveal">
+      <img class="product-thumb"
+        src="https://images.chariowcdn.com/cdn-cgi/image/format=auto,onerror=redirect,quality=medium-high,slow-connection-quality=50/https://assets.chariowcdn.com/assets/store_rsw9ckmh2fzq/drFCvU2lX2zF8wMPHkZ6NCGR9JQ4CDz3ksP3LWcB.png"
+        alt="IA Business Starter">
+      <div class="product-body">
+        <div class="product-category">Débutant · Business</div>
+        <div class="product-name">IA Business Starter  50 Prompts Business</div>
+        <div class="product-desc">De l'idée au lancement en 10 minutes. 50 prompts pour trouver ton idée, faire ton business plan, fixer ton prix. + Bonus : Guide ChatGPT en 30 min.</div>
+        <div class="product-pricing">
+          <span class="price-current">7 500 FCFA</span>
+          <span class="price-original">35 000 FCFA</span>
+          <span class="price-badge">-79%</span>
+        </div>
+        <a href="https://nxgkjqky.mychariow.shop/ia-business-starter" class="btn-buy" target="_blank">
+          Obtenir ce pack →
+        </a>
+        <div class="payment-icons">
+          <span class="pay-badge">Orange Money</span>
+          <span class="pay-badge">Wave</span>
+          <span class="pay-badge">MTN</span>
+          <span class="pay-badge">Carte</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLAGSHIP -->
+    <div class="product-card featured reveal">
+      <span class="featured-tag">⭐ Best seller</span>
+      <img class="product-thumb"
+        src="https://images.chariowcdn.com/cdn-cgi/image/format=auto,onerror=redirect,quality=medium-high,slow-connection-quality=50/https://assets.chariowcdn.com/assets/store_rsw9ckmh2fzq/pntD65wVEgCPiBZfhT6zDJLFZqQuI8m29XYa1t6y.jpg"
+        alt="IA Business Méthode Complète">
+      <div class="product-body">
+        <div class="product-category">Complet · 151+ prompts + 8 bonus</div>
+        <div class="product-name">Lancer son Business avec l'IA  Méthode Complète</div>
+        <div class="product-desc">151 prompts Business, Marketing, Productivité & IA Avancée. 8 bonus offerts : TikTok, WhatsApp, Mobile Money, templates Canva, groupe privé et plus.</div>
+        <div class="product-pricing">
+          <span class="price-current">15 000 FCFA</span>
+          <span class="price-original">75 000 FCFA</span>
+          <span class="price-badge">-80%</span>
+        </div>
+        <a href="https://nxgkjqky.mychariow.shop/ia-business-toolkit-afrique" class="btn-buy" target="_blank">
+          Obtenir ce pack →
+        </a>
+        <div class="payment-icons">
+          <span class="pay-badge">Orange Money</span>
+          <span class="pay-badge">Wave</span>
+          <span class="pay-badge">MTN</span>
+          <span class="pay-badge">Carte</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MANIFESTATION -->
+    <div class="product-card reveal">
+      <img class="product-thumb"
+        src="https://images.chariowcdn.com/cdn-cgi/image/format=auto,onerror=redirect,quality=medium-high,slow-connection-quality=50/https://assets.chariowcdn.com/assets/store_rsw9ckmh2fzq/ONAiCABDD0lR0V8nM9Ek5KWh7HZUtwrxwtna8fme.png"
+        alt="Manifestation Système Pro">
+      <div class="product-body">
+        <div class="product-category">Développement personnel</div>
+        <div class="product-name">Système de Manifestation Pro</div>
+        <div class="product-desc">App interactive HTML + Ebook 40 pages + Template Notion complet. Méthode basée sur la neuroscience. 10 min/jour. 21 jours. Accès à vie, hors-ligne.</div>
+        <div class="product-pricing">
+          <span class="price-current">2 500 FCFA</span>
+          <span class="price-original">12 500 FCFA</span>
+          <span class="price-badge">-80%</span>
+        </div>
+        <a href="https://nxgkjqky.mychariow.shop/manifestation-pro" class="btn-buy" target="_blank">
+          Obtenir ce pack →
+        </a>
+        <div class="payment-icons">
+          <span class="pay-badge">Orange Money</span>
+          <span class="pay-badge">Wave</span>
+          <span class="pay-badge">MTN</span>
+          <span class="pay-badge">Carte</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-inner">
+    <div class="reveal">
+      <div class="section-label">Ce qui nous différencie</div>
+      <h2>Pas un cours.<br>Un outil opérationnel.</h2>
+      <p class="lead">Chaque prompt a été testé sur des business réels en Côte d'Ivoire et en Afrique de l'Ouest. Pas de théorie. Des résultats mesurables dès la première utilisation.</p>
+      <div class="features-list">
+        <div class="feature-item">
+          <div class="feature-icon">🌍</div>
+          <div class="feature-text">
+            <h4>Contextualisé Afrique</h4>
+            <p>Marchés locaux, Mobile Money, WhatsApp comme canal de vente, prix en FCFA  tout est adapté à ta réalité.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-text">
+            <h4>Résultats immédiats</h4>
+            <p>Copie, colle, envoie. Pas besoin de reformuler pendant 2 heures. Le prompt fait le travail.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📱</div>
+          <div class="feature-text">
+            <h4>Depuis ton téléphone</h4>
+            <p>Tout fonctionne sur mobile. Téléchargement immédiat après paiement. Zéro installation.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">♾️</div>
+          <div class="feature-text">
+            <h4>Accès à vie + mises à jour</h4>
+            <p>Tu paies une fois. Tu reçois toutes les futures mises à jour gratuitement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modules-card reveal">
+      <h4>📦 Ce que contient la Méthode Complète</h4>
+      <div class="module-row">
+        <span class="module-name">Module 1  Business & Stratégie</span>
+        <span class="module-count">50 prompts</span>
+      </div>
+      <div class="module-row">
+        <span class="module-name">Module 2  Marketing & Vente</span>
+        <span class="module-count">40 prompts</span>
+      </div>
+      <div class="module-row">
+        <span class="module-name">Module 3  Productivité & Ops</span>
+        <span class="module-count">30 prompts</span>
+      </div>
+      <div class="module-row">
+        <span class="module-name">Module 4  IA Avancée & Scaling</span>
+        <span class="module-count">31 prompts</span>
+      </div>
+      <div class="module-row">
+        <span class="module-name">Bonus TikTok, WhatsApp, Canva…</span>
+        <span class="module-count">8 bonus</span>
+      </div>
+      <div class="total-row">
+        <span class="total-label">Total</span>
+        <span class="total-num">151+ outils</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST / TESTIMONIALS -->
+<section class="trust">
+  <div class="section-header reveal">
+    <div class="section-label">Ils ont testé. Ils ont lancé.</div>
+    <h2>Ce qu'ils en disent</h2>
+  </div>
+
+  <div class="trust-grid">
+    <div class="trust-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>"J'ai utilisé le pack le jour même. En 30 minutes j'avais mon business plan complet pour ma boutique en ligne. Avant je ne savais même pas par où commencer."</p>
+      <div class="trust-author">
+        <div class="avatar">KD</div>
+        <div class="author-info">
+          <strong>Konan D.</strong>
+          <span>Entrepreneur  Abidjan</span>
+        </div>
+      </div>
+    </div>
+    <div class="trust-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>"Le module WhatsApp seul vaut le prix. J'ai triplé mon taux de réponse sur mes messages de vente. Les prompts sont vraiment calibrés pour notre façon de communiquer."</p>
+      <div class="trust-author">
+        <div class="avatar">AF</div>
+        <div class="author-info">
+          <strong>Aminata F.</strong>
+          <span>Freelance  Dakar</span>
+        </div>
+      </div>
+    </div>
+    <div class="trust-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>"Ce que j'aimais c'est que tout était en FCFA et adapté à nos contextes. Pas du contenu copié depuis des blogs américains. Ça change vraiment tout."</p>
+      <div class="trust-author">
+        <div class="avatar">MB</div>
+        <div class="author-info">
+          <strong>Moussa B.</strong>
+          <span>Créateur de contenu  Douala</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="section-header reveal">
+    <div class="section-label">Questions fréquentes</div>
+    <h2>Tout ce que tu veux savoir</h2>
+  </div>
+
+  <div class="faq-list reveal">
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        C'est quoi exactement un "prompt" ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Un prompt, c'est une instruction que tu donnes à l'IA (ChatGPT, Claude…). Nos prompts sont pré-écrits, testés et optimisés. Tu copies, tu colles dans l'IA, tu obtiens le résultat directement  business plan, message WhatsApp, contenu TikTok, etc.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Est-ce que je dois avoir un abonnement ChatGPT payant ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Non. La version gratuite de ChatGPT ou Claude fonctionne parfaitement avec nos prompts. Pas besoin d'abonnement payant pour démarrer.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Comment je reçois le pack après le paiement ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Le téléchargement est immédiat. Dès que le paiement est confirmé (Orange Money, Wave, MTN ou carte), tu accèdes directement au téléchargement depuis la page de confirmation. Tout se fait depuis ton téléphone.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Est-ce que ça marche vraiment pour les business en Afrique ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Oui  c'est exactement pourquoi ces prompts ont été créés. Chaque module intègre les réalités africaines : Mobile Money, marché WhatsApp, prix FCFA, culture locale. Ce ne sont pas des tutos américains traduits en français.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Les mises à jour futures sont incluses ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Oui. Tu paies une fois et tu reçois toutes les mises à jour futures gratuitement. L'accès est à vie.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="section-label">Tu attends quoi ?</div>
+  <h2>Lance ton business ce soir. Pas dans 6 mois.</h2>
+  <p>Téléchargement immédiat. Paiement Orange Money ou Wave. Accès à vie.</p>
+  <a href="https://nxgkjqky.mychariow.shop" class="btn-primary" target="_blank">
+    Voir tous les packs
+    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+  <div class="guarantee">🔒 Paiement sécurisé · Téléchargement immédiat · Accès à vie</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">IA Toolkit <span>by Dominique</span></div>
+  <p>© 2026 IA Toolkit by Dominique  Abidjan, Côte d'Ivoire</p>
+  <p><a href="https://nxgkjqky.mychariow.shop" style="color:var(--gold);text-decoration:none;" target="_blank">nxgkjqky.mychariow.shop</a></p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>

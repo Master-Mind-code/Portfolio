@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jean-Dominique Ebah  Développeur Full Stack  </title>
+<meta name="description" content="Développeur Full Stack & Ingénieur Logiciel basé en Côte d'Ivoire. Plateformes bancaires, monétique ISO 8583, bots de trading algorithmique, IA & cybersécurité." />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/portfolio.css" />
+</head>
+<body>
+
+<template id="__bundler_thumbnail" data-bg-color="#070810">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#a394ff"/>
+        <stop offset="1" stop-color="#00e5c0"/>
+      </linearGradient>
+    </defs>
+    <circle cx="360" cy="300" r="8" fill="#7c6dff"/>
+    <circle cx="560" cy="220" r="8" fill="#00e5c0"/>
+    <circle cx="760" cy="320" r="8" fill="#7c6dff"/>
+    <circle cx="620" cy="430" r="8" fill="#00e5c0"/>
+    <circle cx="440" cy="460" r="8" fill="#7c6dff"/>
+    <g stroke="#7c6dff" stroke-width="1.5" opacity="0.4">
+      <line x1="360" y1="300" x2="560" y2="220"/>
+      <line x1="560" y1="220" x2="760" y2="320"/>
+      <line x1="760" y1="320" x2="620" y2="430"/>
+      <line x1="620" y1="430" x2="440" y2="460"/>
+      <line x1="440" y1="460" x2="360" y2="300"/>
+      <line x1="560" y1="220" x2="620" y2="430"/>
+    </g>
+    <text x="600" y="580" font-family="'Space Grotesk',sans-serif" font-size="68" font-weight="700" fill="url(#g)" text-anchor="middle" letter-spacing="-2">Dominique.Ebah</text>
+    <text x="600" y="630" font-family="monospace" font-size="24" fill="#9aa1bb" text-anchor="middle" letter-spacing="3">DÉVELOPPEUR FULL STACK</text>
+  </svg>
+</template>
+
+<canvas id="neural-canvas"></canvas>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#top" class="nav-brand"><span class="brand-dot"></span>Dominique<span style="color:var(--violet)">.</span>Ebah</a>
+  <ul class="nav-links">
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#case">Étude de cas</a></li>
+    <li><a href="#trading">Trading</a></li>
+    <li><a href="#ia">IA</a></li>
+    <li><a href="#cybersec">Cybersécurité</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact" class="nav-cta">Me contacter</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-status reveal">
+          <span class="live"></span> Disponible pour missions &amp; collaborations
+        </div>
+        <h1 class="reveal d1">
+          Jean-Dominique<br />
+          <span class="grad-text">Ebah Niangoran</span>
+        </h1>
+        <p class="hero-role reveal d2">
+          Développeur Full Stack <span class="sep"> </span> 
+        </p>
+        <p class="hero-desc reveal d2">
+          Je conçois des <strong>plateformes bancaires</strong>, des systèmes monétiques
+          <strong>ISO 8583</strong>, des <strong>bots de trading algorithmique</strong> et des
+          <strong>systèmes intelligents</strong>. Basé à Abidjan, je construis des solutions
+          robustes et prêtes pour la production  pour l'Afrique de l'Ouest et au-delà.
+        </p>
+        <div class="hero-buttons reveal d3">
+          <a href="#projets" class="btn btn-primary" data-magnetic>
+            <i class="fa-solid fa-folder-open"></i><span>Explorer mes projets</span>
+          </a>
+          <a href="#contact" class="btn btn-ghost" data-magnetic>
+            <i class="fa-solid fa-paper-plane"></i><span>Travaillons ensemble</span>
+          </a>
+        </div>
+        <div class="hero-metrics reveal d4">
+          <div class="metric-block">
+            <div class="metric-num" data-count="9" data-suffix="+">0</div>
+            <div class="metric-label">Projets réalisés</div>
+          </div>
+          <div class="metric-block">
+            <div class="metric-num" data-count="150" data-suffix="+">0</div>
+            <div class="metric-label">Endpoints API</div>
+          </div>
+          <div class="metric-block">
+            <div class="metric-num" data-count="3">0</div>
+            <div class="metric-label">Projets en prod</div>
+          </div>
+          <div class="metric-block">
+            <div class="metric-num" data-count="6">0</div>
+            <div class="metric-label">Skills IA créés</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-portrait reveal d2">
+        <div class="portrait-card">
+          <div class="portrait-glow"></div>
+          <img src="assets/photo.png" alt="Jean-Dominique Ebah Niangoran" />
+          <div class="portrait-badge">
+            <div class="pb-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="pb-text">
+              <strong>Abidjan, Côte d'Ivoire</strong>
+              <span>Disponible en remote &amp; sur site</span>
+            </div>
+          </div>
+        </div>
+        <div class="float-chip fc-1"><i class="fa-solid fa-shield-halved"></i> ISO 8583 · PCI-DSS</div>
+        <div class="float-chip fc-2"><i class="fa-solid fa-chart-line"></i> SMC Trading Bot</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint reveal d4">
+    <div class="mouse"></div>
+    Défiler
+  </div>
+</header>
+
+<!-- MARQUEE / STACK -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span class="marquee-item"><i class="fa-brands fa-react"></i> React 19 / TypeScript</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-brands fa-node-js"></i> NestJS / Express</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-solid fa-mobile-screen"></i> Flutter / Dart</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-brands fa-microsoft"></i> .NET / C#</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-brands fa-python"></i> Python</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-solid fa-database"></i> PostgreSQL</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-brands fa-docker"></i> Docker</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-solid fa-shield-halved"></i> ISO 8583</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-solid fa-chart-line"></i> MetaTrader 5</span><span class="marquee-item star">✦</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item"><i class="fa-brands fa-react"></i> React 19 / TypeScript</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-brands fa-node-js"></i> NestJS / Express</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-solid fa-mobile-screen"></i> Flutter / Dart</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-brands fa-microsoft"></i> .NET / C#</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-brands fa-python"></i> Python</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-solid fa-database"></i> PostgreSQL</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-brands fa-docker"></i> Docker</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-solid fa-shield-halved"></i> ISO 8583</span><span class="marquee-item star">✦</span>
+    <span class="marquee-item"><i class="fa-solid fa-chart-line"></i> MetaTrader 5</span><span class="marquee-item star">✦</span>
+  </div>
+</div>
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Portfolio sélectionné</div>
+      <h2 class="section-title">Des projets en production,<br />pas des démos</h2>
+      <p class="section-sub">Applications full-stack, systèmes bancaires et plateformes digitales déployés pour des institutions financières et des entreprises d'Afrique de l'Ouest.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- CardFlow -->
+      <article class="project-card c-blue reveal">
+        <div class="spotlight"></div>
+        <div class="project-top">
+          <div class="project-icon"><i class="fa-solid fa-credit-card"></i></div>
+          <span class="project-badge badge-prod"><span class="bdot"></span> En production</span>
+        </div>
+        <h3 class="project-title">Gestion du cycle de vie des cartes</h3>
+        <p class="project-desc">Plateforme web de gestion du cycle de vie des cartes bancaires pour une banque ivoirienne. Conforme aux normes GIM UEMOA, avec 10 modules complets de la commande à l'enrôlement biométrique et l'installation d'applets.</p>
+        <div class="project-tags">
+          <span class="tag">React 18</span><span class="tag">TypeScript</span><span class="tag">TailwindCSS</span>
+          <span class="tag">Radix UI</span><span class="tag">React Query</span><span class="tag">JWT</span><span class="tag">GIM UEMOA</span>
+        </div>
+        <div class="project-metrics">
+          <span class="pmetric"><i class="fa-solid fa-plug"></i> <strong>150+</strong> endpoints</span>
+          <span class="pmetric"><i class="fa-solid fa-cubes"></i> <strong>50+</strong> composants</span>
+          <span class="pmetric"><i class="fa-solid fa-bolt"></i> Bundle <strong>−81%</strong></span>
+        </div>
+      </article>
+
+      <!-- GAB -->
+      <article class="project-card c-rose reveal d1">
+        <div class="spotlight"></div>
+        <div class="project-top">
+          <div class="project-icon"><i class="fa-solid fa-building-columns"></i></div>
+          <span class="project-badge badge-wip"><span class="bdot"></span> En cours</span>
+        </div>
+        <h3 class="project-title">Système GAB UNACOOPEC-CI</h3>
+        <p class="project-desc">Logiciel complet de Guichet Automatique Bancaire. 14 écrans kiosque, intégration hardware (distributeur GRG, lecteur carte, capteur biométrique SecuGen), moteur monétique ISO 8583 codé de zéro et mode kiosque Windows.</p>
+        <div class="project-tags">
+          <span class="tag">.NET 4.7.2</span><span class="tag">ASP.NET Core 8</span><span class="tag">WinForms</span>
+          <span class="tag">PostgreSQL</span><span class="tag">ISO 8583</span><span class="tag">PCI-DSS</span><span class="tag">ESC/POS</span>
+        </div>
+        <div class="project-metrics">
+          <span class="pmetric"><i class="fa-solid fa-display"></i> <strong>14</strong> écrans</span>
+          <span class="pmetric"><i class="fa-solid fa-microchip"></i> <strong>4</strong> composants HW</span>
+          <span class="pmetric"><i class="fa-solid fa-vial"></i> <strong>33</strong> tests E2E</span>
+        </div>
+      </article>
+
+      <!-- O-Detox -->
+      <article class="project-card c-green reveal">
+        <div class="spotlight"></div>
+        <div class="project-top">
+          <div class="project-icon"><i class="fa-solid fa-leaf"></i></div>
+          <span class="project-badge badge-prod"><span class="bdot"></span> En production</span>
+        </div>
+        <h3 class="project-title">O-Detox E-Commerce</h3>
+        <p class="project-desc">Application e-commerce moderne pour produits de détoxification naturels. Catalogue, panier interactif, commande via WhatsApp, panel d'administration avec dashboard KPIs et analytics avancés (Chart.js).</p>
+        <div class="project-tags">
+          <span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Supabase</span>
+          <span class="tag">PostgreSQL</span><span class="tag">Chart.js</span><span class="tag">RLS</span>
+        </div>
+        <div class="project-metrics">
+          <span class="pmetric"><i class="fa-solid fa-database"></i> <strong>3</strong> tables + RLS</span>
+          <span class="pmetric"><i class="fa-solid fa-chart-bar"></i> Analytics <strong>temps réel</strong></span>
+          <span class="pmetric"><i class="fa-brands fa-whatsapp"></i> Checkout WhatsApp</span>
+        </div>
+      </article>
+
+      <!-- Belife -->
+      <article class="project-card c-cyan reveal d1">
+        <div class="spotlight"></div>
+        <div class="project-top">
+          <div class="project-icon"><i class="fa-solid fa-shield-heart"></i></div>
+          <span class="project-badge badge-prod"><span class="bdot"></span> En production</span>
+        </div>
+        <h3 class="project-title">Belife APIs Micro-Assurance</h3>
+        <p class="project-desc">Module de gestion des prestations pour Prudential Belife, compagnie d'assurance ivoirienne. Demandes via canal USSD, validation d'éligibilité automatisée et paiement direct sur comptes MTN Mobile Money.</p>
+        <div class="project-tags">
+          <span class="tag">Backend</span><span class="tag">REST API</span><span class="tag">MTN Mobile Money</span>
+          <span class="tag">USSD</span><span class="tag">Audit Trail</span>
+        </div>
+        <div class="project-metrics">
+          <span class="pmetric"><i class="fa-solid fa-mobile-screen"></i> Canal <strong>USSD</strong></span>
+          <span class="pmetric"><i class="fa-solid fa-money-bill-transfer"></i> <strong>Mobile Money</strong></span>
+          <span class="pmetric"><i class="fa-solid fa-file-contract"></i> Conformité <strong>CIMA</strong></span>
+        </div>
+      </article>
+
+      <!-- DroniX -->
+      <article class="project-card c-gold reveal">
+        <div class="spotlight"></div>
+        <div class="project-top">
+          <div class="project-icon"><i class="fa-solid fa-helicopter"></i></div>
+          <span class="project-badge badge-prod"><span class="bdot"></span> En production</span>
+        </div>
+        <h3 class="project-title">DroniX Plateforme Drones</h3>
+        <p class="project-desc">Site vitrine responsive pour une startup ivoirienne de drones professionnels. 10 sections, animations Framer Motion, hero à particules canvas, backend Express.js avec formulaire de contact et base de données.</p>
+        <div class="project-tags">
+          <span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">TailwindCSS</span>
+          <span class="tag">Framer Motion</span><span class="tag">Express.js</span><span class="tag">PostgreSQL</span><span class="tag">PM2</span>
+        </div>
+        <div class="project-metrics">
+          <span class="pmetric"><i class="fa-solid fa-gauge-high"></i> Lighthouse <strong>90+</strong></span>
+          <span class="pmetric"><i class="fa-solid fa-drone"></i> <strong>6</strong> modèles</span>
+          <span class="pmetric"><i class="fa-solid fa-box"></i> Bundle <strong>&lt;500ko</strong></span>
+        </div>
+      </article>
+
+      <!-- NeoStep -->
+      <article class="project-card c-violet reveal d1">
+        <div class="spotlight"></div>
+        <div class="project-top">
+          <div class="project-icon"><i class="fa-solid fa-bullseye"></i></div>
+          <span class="project-badge badge-wip"><span class="bdot"></span> En cours</span>
+        </div>
+        <h3 class="project-title">NeoStep Gestion d'Objectifs</h3>
+        <p class="project-desc">Application mobile cross-platform de gestion d'objectifs avec collaboration temps réel. Backend NestJS avec WebSockets, frontend Flutter multi-plateforme, notifications Firebase et architecture clean modulaire.</p>
+        <div class="project-tags">
+          <span class="tag">NestJS</span><span class="tag">Flutter 3</span><span class="tag">MySQL</span>
+          <span class="tag">WebSockets</span><span class="tag">JWT</span><span class="tag">Firebase</span><span class="tag">Docker</span>
+        </div>
+        <div class="project-metrics">
+          <span class="pmetric"><i class="fa-solid fa-vial"></i> <strong>27</strong> tests unitaires</span>
+          <span class="pmetric"><i class="fa-solid fa-mobile"></i> iOS / Android / Web</span>
+          <span class="pmetric"><i class="fa-solid fa-bolt"></i> Temps <strong>réel</strong></span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section id="case" class="alt-bg">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Étude de cas</div>
+      <h2 class="section-title">Projet phare en profondeur</h2>
+      <p class="section-sub">Comment j'ai conçu une plateforme bancaire conforme aux normes monétiques de l'UEMOA, de la commande de carte jusqu'à l'enrôlement biométrique.</p>
+    </div>
+
+    <div class="case reveal d1">
+      <div class="case-inner">
+        <div class="case-left">
+          <div class="case-tagrow">
+            <span class="case-flag">Banque · Monétique</span>
+            <span class="case-domain">CardFlow UEMOA · React + TypeScript</span>
+          </div>
+          <h3>Gérer le cycle de vie complet d'une carte bancaire</h3>
+          <p class="case-lead">Une banque ivoirienne avait besoin d'un outil unique pour orchestrer ses cartes de l'émission à l'enrôlement biométrique tout en restant strictement conforme aux normes GIM UEMOA et PCI-DSS.</p>
+
+          <div class="case-block">
+            <h4><i class="fa-solid fa-circle-exclamation"></i> Le défi</h4>
+            <p>Des processus dispersés sur plusieurs systèmes, des contraintes réglementaires fortes (GIM UEMOA, PCI-DSS) et un besoin d'interface fiable pour des opérations bancaires sensibles, à fort volume.</p>
+          </div>
+
+          <div class="case-block">
+            <h4><i class="fa-solid fa-screwdriver-wrench"></i> Ma solution</h4>
+            <ul class="case-list">
+              <li><i class="fa-solid fa-check"></i> 10 modules métiers unifiés : commande, personnalisation, enrôlement biométrique, installation d'applets, suivi du cycle de vie</li>
+              <li><i class="fa-solid fa-check"></i> Architecture React 18 + TypeScript, validation stricte avec Zod, état serveur géré via React Query</li>
+              <li><i class="fa-solid fa-check"></i> Intégration de 150+ endpoints API conformes GIM UEMOA, sécurisés par JWT</li>
+              <li><i class="fa-solid fa-check"></i> Design system interne de 50+ composants accessibles (Radix UI + TailwindCSS)</li>
+            </ul>
+          </div>
+
+          <div class="case-block">
+            <h4><i class="fa-solid fa-arrow-trend-up"></i> L'impact</h4>
+            <p>Une plateforme unique, performante et maintenable, déployée en production avec une taille de bundle réduite de 81 % grâce à un travail ciblé d'optimisation (code-splitting, lazy loading, tree-shaking).</p>
+          </div>
+
+          <div class="case-tags">
+            <span class="tag">React 18</span><span class="tag">TypeScript</span><span class="tag">Zod</span>
+            <span class="tag">React Query</span><span class="tag">Radix UI</span><span class="tag">TailwindCSS</span>
+            <span class="tag">JWT</span><span class="tag">GIM UEMOA</span><span class="tag">PCI-DSS</span>
+          </div>
+        </div>
+
+        <div class="case-right">
+          <div class="case-stat">
+            <div class="cs-num"><span data-count="150" data-suffix="+">0</span></div>
+            <div class="cs-label">Endpoints API intégrés &amp; sécurisés</div>
+          </div>
+          <div class="case-stat">
+            <div class="cs-num"><span data-count="81" data-suffix="%">0</span></div>
+            <div class="cs-label">Réduction de la taille du bundle</div>
+          </div>
+          <div class="case-stat">
+            <div class="cs-num"><span data-count="10">0</span></div>
+            <div class="cs-label">Modules métiers livrés</div>
+          </div>
+          <div class="case-stat">
+            <div class="cs-num"><span data-count="50" data-suffix="+">0</span></div>
+            <div class="cs-label">Composants réutilisables</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRADING -->
+<section id="trading">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Finance algorithmique</div>
+      <h2 class="section-title">Trading &amp; systèmes Smart Money</h2>
+      <p class="section-sub">Automatisation du trading avec les concepts Smart Money Concepts (SMC) et MetaTrader 5.</p>
+    </div>
+    <div class="cards-grid">
+      <article class="info-card reveal">
+        <div class="info-card-head">
+          <div class="ic"><i class="fa-solid fa-robot"></i></div>
+          <h4>Smart Money Bot v3 (MT5)</h4>
+        </div>
+        <ul class="feat-list">
+          <li><i class="fa-solid fa-bolt"></i> Bot Python connecté à MetaTrader 5 via l'API Exness (XAUUSDm, EURUSDm, GBPUSDm, USDJPYm)</li>
+          <li><i class="fa-solid fa-bolt"></i> Scoring sur 12 critères SMC : BOS, CHoCH, FVG, IFVG, liquidité, équilibre, volume</li>
+          <li><i class="fa-solid fa-bolt"></i> Gestion du risque 1 %/trade, ordres LIMIT uniquement, filtrage sessions London/NY</li>
+          <li><i class="fa-solid fa-bolt"></i> Détection de setups grade A+ (score 8/12) en conditions de marché réelles</li>
+        </ul>
+      </article>
+      <article class="info-card teal reveal d1">
+        <div class="info-card-head">
+          <div class="ic"><i class="fa-brands fa-telegram"></i></div>
+          <h4>Bot Telegram → MT5</h4>
+        </div>
+        <ul class="feat-list">
+          <li><i class="fa-solid fa-bolt"></i> Système de trading automatisé : bot Python Telegram connecté à MT5</li>
+          <li><i class="fa-solid fa-bolt"></i> Gestion multi-TP, calcul automatique des lots, gestion des positions</li>
+          <li><i class="fa-solid fa-bolt"></i> Connecteur MT5 avec breakeven automatique et trailing stop</li>
+          <li><i class="fa-solid fa-bolt"></i> Alertes Telegram en temps réel sur les signaux</li>
+        </ul>
+      </article>
+      <article class="info-card reveal d2">
+        <div class="info-card-head">
+          <div class="ic"><i class="fa-solid fa-chart-line"></i></div>
+          <h4>Pine Script &amp; outils</h4>
+        </div>
+        <ul class="feat-list">
+          <li><i class="fa-solid fa-bolt"></i> Indicateur Pine Script v6 « SMC Visual v5 » avec scoring 12 critères</li>
+          <li><i class="fa-solid fa-bolt"></i> Analyse FVG XAU/USD avec notation SMC et failles mathématiques</li>
+          <li><i class="fa-solid fa-bolt"></i> Journal de trading Notion : 22 propriétés, vues multiples, revue mensuelle</li>
+          <li><i class="fa-solid fa-bolt"></i> Backtest et validation des stratégies sur données historiques Gold</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- IA -->
+<section id="ia" class="alt-bg">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Intelligence artificielle</div>
+      <h2 class="section-title">IA &amp; systèmes intelligents</h2>
+      <p class="section-sub">Maîtrise des outils IA modernes et construction de systèmes basés sur l'intelligence artificielle.</p>
+    </div>
+    <div class="cards-grid">
+      <article class="info-card reveal">
+        <div class="info-card-head">
+          <div class="ic"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h4>Maîtrise des outils IA</h4>
+        </div>
+        <ul class="feat-list">
+          <li><i class="fa-solid fa-bolt"></i> <strong>Claude Code &amp; Cowork</strong> : automatisation de tâches complexes, skills personnalisés, projets multi-fichiers</li>
+          <li><i class="fa-solid fa-bolt"></i> <strong>ChatGPT</strong> : prompt engineering avancé, génération de contenu, aide au développement</li>
+          <li><i class="fa-solid fa-bolt"></i> <strong>Google Gemini</strong> : intégration projets (chatbot WhatsApp, n8n)</li>
+          <li><i class="fa-solid fa-bolt"></i> <strong>Ollama (local)</strong> : déploiement de LLM en local, machine sans GPU dédié</li>
+        </ul>
+      </article>
+      <article class="info-card teal reveal d1">
+        <div class="info-card-head">
+          <div class="ic"><i class="fa-solid fa-brain"></i></div>
+          <h4>Jarvis Assistant IA personnel</h4>
+        </div>
+        <ul class="feat-list">
+          <li><i class="fa-solid fa-bolt"></i> Assistant IA construit avec FastAPI + WebSocket + Python</li>
+          <li><i class="fa-solid fa-bolt"></i> Interface visuelle avec sphère neurale 3D animée</li>
+          <li><i class="fa-solid fa-bolt"></i> Communication en temps réel via WebSocket</li>
+          <li><i class="fa-solid fa-bolt"></i> Architecture extensible pour plugins et modules supplémentaires</li>
+        </ul>
+      </article>
+      <article class="info-card reveal d2">
+        <div class="info-card-head">
+          <div class="ic"><i class="fa-solid fa-atom"></i></div>
+          <h4>Interface Ollama &amp; projets IA</h4>
+        </div>
+        <ul class="feat-list">
+          <li><i class="fa-solid fa-bolt"></i> Chat HTML + visualisation Canvas 3D, particules Fibonacci, morphing</li>
+          <li><i class="fa-solid fa-bolt"></i> Optimisé pour Lenovo 32 Go sans GPU dédié</li>
+          <li><i class="fa-solid fa-bolt"></i> Chatbot WhatsApp n8n (Google Gemini, localisation ivoirienne)</li>
+          <li><i class="fa-solid fa-bolt"></i> Stratégie ManyChat : funnels Instagram/WhatsApp e-commerce</li>
+        </ul>
+      </article>
+      <article class="info-card teal reveal d3">
+        <div class="info-card-head">
+          <div class="ic"><i class="fa-solid fa-store"></i></div>
+          <h4>Business digital avec l'IA</h4>
+        </div>
+        <ul class="feat-list">
+          <li><i class="fa-solid fa-bolt"></i> Système de Manifestation Pro : app HTML + ebook 40+ pages + templates Notion</li>
+          <li><i class="fa-solid fa-bolt"></i> Vendu à 2 500 FCFA sur Chariow, paiement Mobile Money</li>
+          <li><i class="fa-solid fa-bolt"></i> Landing page IA Toolkit : 3 tiers tarifaires, hébergée sur Netlify</li>
+          <li><i class="fa-solid fa-bolt"></i> Rapport PDF : 12 opportunités de produits digitaux pour le marché africain</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CYBERSEC -->
+<section id="cybersec">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Sécurité offensive &amp; défensive</div>
+      <h2 class="section-title">Cybersécurité &amp; CTF</h2>
+      <p class="section-sub">Pentest, hacking éthique, CTF et audit de sécurité applicative.</p>
+    </div>
+    <div class="cards-grid">
+      <article class="info-card rose reveal">
+        <div class="info-card-head">
+          <div class="ic"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+          <h4>Outils &amp; reconnaissance</h4>
+        </div>
+        <ul class="feat-list">
+          <li><i class="fa-solid fa-bolt"></i> <strong>msrscrap</strong> : outil de reconnaissance transformé en toolkit de 1500+ lignes</li>
+          <li><i class="fa-solid fa-bolt"></i> Burp Suite avancé : démo de data tampering (Moussouris Program)</li>
+          <li><i class="fa-solid fa-bolt"></i> Maîtrise de Nmap, Metasploit, WPScan pour les audits</li>
+          <li><i class="fa-solid fa-bolt"></i> Pentest web : XSS, injection SQL, OWASP Top 10</li>
+        </ul>
+      </article>
+      <article class="info-card rose reveal d1">
+        <div class="info-card-head">
+          <div class="ic"><i class="fa-solid fa-flag"></i></div>
+          <h4>EcowasCTF ByteBreakers</h4>
+        </div>
+        <ul class="feat-list">
+          <li><i class="fa-solid fa-bolt"></i> Cryptographie : RSA cube root attack, César, Morse, Adinkra</li>
+          <li><i class="fa-solid fa-bolt"></i> Stéganographie : stegsnow, canal HTTP covert, AES decrypt</li>
+          <li><i class="fa-solid fa-bolt"></i> Blockchain : challenge Merkle Tree « Bit2Bit »</li>
+          <li><i class="fa-solid fa-bolt"></i> Participation active sous l'équipe ByteBreakers</li>
+        </ul>
+      </article>
+      <article class="info-card rose reveal d2">
+        <div class="info-card-head">
+          <div class="ic"><i class="fa-solid fa-lock"></i></div>
+          <h4>Audit GAB UNACOOPEC</h4>
+        </div>
+        <ul class="feat-list">
+          <li><i class="fa-solid fa-bolt"></i> Audit complet : 36 failles identifiées (7 critiques, 9 hautes, 12 moyennes)</li>
+          <li><i class="fa-solid fa-bolt"></i> Vulnérabilité critique : bypass biométrique via MATCH_ON_CARD_OK sans signature</li>
+          <li><i class="fa-solid fa-bolt"></i> IDOR sur CustomerId, PAN loggé en clair (PCI-DSS), race condition sur soldes</li>
+          <li><i class="fa-solid fa-bolt"></i> Rapport d'audit complet + plan de remédiation priorisé</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="alt-bg">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Écosystème Claude</div>
+      <h2 class="section-title">Skills IA créés</h2>
+      <p class="section-sub">Skills personnalisés développés et déployés dans l'écosystème Claude Cowork.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-tile reveal">
+        <div class="st-icon" style="color:#a394ff"><i class="fa-solid fa-helmet-safety"></i></div>
+        <div><div class="st-name">tech-architect-mentor</div><div class="st-desc">Architecture logicielle, choix technologiques, DevOps et code structuré</div></div>
+      </div>
+      <div class="skill-tile reveal d1">
+        <div class="st-icon" style="color:#ffce63"><i class="fa-solid fa-chart-line"></i></div>
+        <div><div class="st-name">smart-money-mentor</div><div class="st-desc">Trading SMC, analyse de marché, signaux XAU/USD, gestion du capital</div></div>
+      </div>
+      <div class="skill-tile reveal d2">
+        <div class="st-icon" style="color:#00e5c0"><i class="fa-solid fa-bullhorn"></i></div>
+        <div><div class="st-name">digital-marketing-mentor</div><div class="st-desc">Funnel, copywriting, pages de vente, scaling et acquisition client</div></div>
+      </div>
+      <div class="skill-tile reveal">
+        <div class="st-icon" style="color:#ff6b8a"><i class="fa-solid fa-shield-halved"></i></div>
+        <div><div class="st-name">cybersec-mentor</div><div class="st-desc">Pentest, CTF, vulnérabilités, audit et sécurisation d'applications</div></div>
+      </div>
+      <div class="skill-tile reveal d1">
+        <div class="st-icon" style="color:#a78bfa"><i class="fa-solid fa-compass"></i></div>
+        <div><div class="st-name">life-clarity-mentor</div><div class="st-desc">Clarté personnelle, décisions stratégiques, vision de vie</div></div>
+      </div>
+      <div class="skill-tile reveal d2">
+        <div class="st-icon" style="color:#f59e0b"><i class="fa-solid fa-coins"></i></div>
+        <div><div class="st-name">wealth-mentor</div><div class="st-desc">Gestion financière, investissement, construction de patrimoine</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-card reveal">
+      <div class="eyebrow">Collaboration</div>
+      <h2>Un projet ambitieux ?<br /><span class="grad-text">Construisons-le ensemble.</span></h2>
+      <p class="lead">Disponible pour des missions de développement full-stack, d'audit de sécurité, d'intégration API ou de conseil technique en local comme à l'international.</p>
+      <div class="contact-actions">
+        <a href="mailto:ebahniangoran@gmail.com" class="btn btn-primary" data-magnetic>
+          <i class="fa-solid fa-paper-plane"></i><span>Envoyer un email</span>
+        </a>
+        <a href="https://www.linkedin.com/in/niangoran-jean-dominique-ebah-0b3594325/" target="_blank" rel="noopener" class="btn btn-ghost" data-magnetic>
+          <i class="fa-brands fa-linkedin"></i><span>Voir mon LinkedIn</span>
+        </a>
+      </div>
+      <div class="contact-socials">
+        <a href="mailto:ebahniangoran@gmail.com" class="social-link" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://github.com/Master-Mind-code/" target="_blank" rel="noopener" class="social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/niangoran-jean-dominique-ebah-0b3594325/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://ia-toolkit.netlify.app" target="_blank" rel="noopener" class="social-link" aria-label="Site web"><i class="fa-solid fa-globe"></i></a>
+      </div>
+      <div class="contact-meta">
+        <span class="cm"><i class="fa-solid fa-location-dot"></i> Abidjan, Côte d'Ivoire</span>
+        <span class="cm"><i class="fa-solid fa-clock"></i> Réponse sous 24 h</span>
+        <span class="cm"><i class="fa-solid fa-circle-check"></i> Remote &amp; sur site</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand"><span class="brand-dot"></span>Dominique<span style="color:var(--violet)">.</span>Ebah</div>
+  <p>Développeur Full Stack &amp; Ingénieur Logiciel Abidjan, Côte d'Ivoire</p>
+  <p style="font-size:0.75rem">© 2026 Jean-Dominique Ebah Niangoran Conçu &amp; développé avec soin.</p>
+</footer>
+
+<script src="assets/neural.js"></script>
+<script src="assets/interactions.js"></script>
+</body>
+</html>
